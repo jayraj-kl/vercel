@@ -1,11 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 import httpProxy from 'http-proxy';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const proxy = httpProxy.createProxyServer();
-const port = process.env.PORT || 3000;
-const BASE_URL = 'https://vercel-clone-outputs-v7.s3.ap-south-1.amazonaws.com/__outputs/'
+const port = process.env.PORT;
+const BASE_URL = process.env.BASE_URL;
 
 app.use(cors())
 app.use(express.json());
