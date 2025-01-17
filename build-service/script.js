@@ -17,7 +17,7 @@ const DEPLOYEMENT_ID = process.env.DEPLOYEMENT_ID
 const kafka = new Kafka({
     clientId: `docker-build-server-${DEPLOYEMENT_ID}`,
     brokers: [process.env.BROKER1],
-    connectionTimeout: 30000, // Default is 1000 ms; increase to 30 seconds
+    connectionTimeout: 30000, 
     authenticationTimeout: 30000, 
     ssl: { ca: [fs.readFileSync(path.join(__dirname, 'kafka.pem'), 'utf-8')] },
     sasl: { mechanism: 'plain', username: process.env.SASL_USERNAME, password: process.env.SASL_PASSWORD }
