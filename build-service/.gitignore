@@ -40,3 +40,4 @@ yarn-error.log*
 
 #
 docker-compose.yml 
+kafka.pem

@@ -16,9 +16,14 @@ app.use((req, res) => {
     const hostname = req.hostname;
     const subdomain = hostname.split('.')[0];
 
-    //Custom Domain
+    // Custom Domain
+    // DB Query = prisma.
 
-    const resolvesTo = `${BASE_URL}${subdomain}`;
+    // kafka event page visit
+
+    const id = 'aa5b21bf-53b0-4528-a794-01dbeb99cf52';
+    // const resolvesTo = `${BASE_URL}${subdomain}`;
+    const resolvesTo = `${BASE_URL}${id}`;
     return proxy.web(req, res, { target: resolvesTo, changeOrigin: true })
 })
 
