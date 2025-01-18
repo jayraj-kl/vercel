@@ -17,7 +17,7 @@ import { ECSClient, RunTaskCommand } from '@aws-sdk/client-ecs';
 dotenv.config();
 
 const port = process.env.PORT || 3000;
-const portSocket = parseInt(process.env.PORT_SOCKET || '3001');
+// const portSocket = parseInt(process.env.PORT_SOCKET || '3001');
 const app= express();
 // const io = new Server({ cors: { origin: '*' } })
 const ecsClient = new ECSClient({ region: process.env.REGION, credentials: { accessKeyId: process.env.CREDENTIALS_ACCESS_KEY_ID || '',  secretAccessKey: process.env.CREDENTIALS_SECRET_ACCESS_KEY || ''  } } );
