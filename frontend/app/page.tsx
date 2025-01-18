@@ -12,8 +12,8 @@ export default function Home() {
   const [repoURL, setURL] = useState<string>("");
   const [logs, setLogs] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [projectId, setProjectId] = useState<string | undefined>();
-  const [deploymentId, setDeploymentId] = useState<string | undefined>();
+  const [ , setProjectId] = useState<string | undefined>();
+  const [ , setDeploymentId] = useState<string | undefined>();
   const [deployPreviewURL, setDeployPreviewURL] = useState<string | undefined>();
   const pollingRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
@@ -27,11 +27,23 @@ export default function Home() {
     return [regex.test(repoURL), "Enter valid Github Repository URL"];
   }, [repoURL]);
 
+  interface LogEntry {
+    event_id: string;
+    deployment_id: string;
+    log: string;
+    timestamp: string;
+  }
+  
+  interface DeploymentLogs {
+    logs: LogEntry[];
+  }
+  
+
   const pollDeploymentLogs = useCallback(async (deployId: string) => {
     try {
       const { data } = await axios.get(`https://backend1.jayrajkl.com/logs/${deployId}`);
       if (data && data.logs) {
-        const newLogs = data.logs.map((log: any) => log.log);
+        const newLogs: string[] = (data as DeploymentLogs).logs.map((log: LogEntry): string => log.log);
         setLogs(newLogs);
         
         // Check if deployment is complete
