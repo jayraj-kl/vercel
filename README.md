@@ -1,9 +1,5 @@
 # Frontend Deployer
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Node.js](https://img.shields.io/badge/Node.js-v18+-green.svg)
-![TypeScript](https://img.shields.io/badge/TypeScript-v5.0+-blue.svg)
-
 Frontend Deployer is a self-hosted, one-stop deployment platform that enables automatic deployments from GitHub repositories. It provides a simplified workflow for deploying web applications with instant preview URLs.
 
 ## 🚀 Features
